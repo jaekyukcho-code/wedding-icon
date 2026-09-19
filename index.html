@@ -27,7 +27,6 @@
 
   <title>J♡D Wedding</title>
 
-  <!-- iPhone 홈화면 아이콘 -->
   <link
     rel="apple-touch-icon"
     sizes="180x180"
@@ -40,7 +39,6 @@
     href="./apple-touch-icon-v2.png"
   >
 
-  <!-- 일반 브라우저 아이콘 -->
   <link
     rel="icon"
     type="image/png"
@@ -65,7 +63,6 @@
       padding:0;
       width:100%;
       min-height:100%;
-
       background:var(--bg);
       color:var(--text);
 
@@ -103,12 +100,11 @@
       margin:0 auto 22px;
 
       border-radius:25px;
+      overflow:hidden;
 
       box-shadow:
         0 10px 30px
         rgba(80,60,60,.10);
-
-      overflow:hidden;
     }
 
     .logo img{
@@ -120,10 +116,8 @@
 
     .eyebrow{
       color:var(--rose);
-
       font-size:11px;
       font-weight:800;
-
       letter-spacing:.18em;
     }
 
@@ -148,61 +142,16 @@
       line-height:1.6;
     }
 
-    .loading{
-      margin-top:28px;
-
-      color:var(--muted);
-
-      font-size:11px;
-    }
-
-    .dot{
-      display:inline-block;
-
-      width:6px;
-      height:6px;
-
-      margin:0 2px;
-
-      border-radius:50%;
-
-      background:var(--rose);
-
-      animation:blink 1.2s infinite ease-in-out;
-    }
-
-    .dot:nth-child(2){
-      animation-delay:.15s;
-    }
-
-    .dot:nth-child(3){
-      animation-delay:.30s;
-    }
-
-    @keyframes blink{
-      0%,80%,100%{
-        opacity:.25;
-        transform:scale(.8);
-      }
-
-      40%{
-        opacity:1;
-        transform:scale(1);
-      }
-    }
-
     .openButton{
-      display:inline-flex;
-
+      display:flex;
       align-items:center;
       justify-content:center;
 
       width:100%;
 
-      margin-top:24px;
-      padding:14px 18px;
+      margin-top:28px;
+      padding:15px 18px;
 
-      border:0;
       border-radius:16px;
 
       background:var(--rose);
@@ -250,36 +199,18 @@
       Wedding Dashboard
     </div>
 
-    <div class="loading">
-      대시보드로 이동 중
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
-
     <a
       class="openButton"
-      id="openDashboard"
       href="https://script.google.com/macros/s/AKfycbyMeoQwIOuLQWh7ZvlSYjjHDazf-FsLv_BgMLgKcreitgwYeQricUesIpAAy7J1ezm5/exec"
     >
       웨딩 대시보드 열기
     </a>
 
     <div class="note">
-      자동 이동되지 않으면 위 버튼을 눌러주세요.
+      버튼을 누르면 웨딩 대시보드로 이동합니다.
     </div>
 
   </main>
-
-
-  <script>
-    const DASHBOARD_URL =
-      'https://script.google.com/macros/s/AKfycbyMeoQwIOuLQWh7ZvlSYjjHDazf-FsLv_BgMLgKcreitgwYeQricUesIpAAy7J1ezm5/exec';
-
-    setTimeout(() => {
-      window.location.replace(DASHBOARD_URL);
-    }, 900);
-  </script>
 
 </body>
 </html>
