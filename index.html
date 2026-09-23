@@ -8,7 +8,10 @@
     content="width=device-width, initial-scale=1, viewport-fit=cover"
   >
 
-  <meta name="theme-color" content="#F8F5F2">
+  <meta
+    name="theme-color"
+    content="#F8F5F2"
+  >
 
   <meta
     name="apple-mobile-web-app-capable"
@@ -25,44 +28,48 @@
     content="J♡D Wedding"
   >
 
-  <title>J♡D Wedding</title>
+  <link
+    rel="manifest"
+    href="./manifest.json"
+  >
 
   <link
     rel="apple-touch-icon"
-    sizes="180x180"
     href="./apple-touch-icon-v2.png"
   >
 
-  <link
-    rel="apple-touch-icon-precomposed"
-    sizes="180x180"
-    href="./apple-touch-icon-v2.png"
-  >
+  <title>J♡D Wedding</title>
 
-  <link
-    rel="icon"
-    type="image/png"
-    href="./apple-touch-icon-v2.png"
-  >
+  <script
+    src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
+    defer
+  ></script>
 
   <style>
     :root{
       --bg:#F8F5F2;
+      --card:#FFFFFF;
       --text:#302B2C;
       --muted:#8D8382;
+      --line:#EEE5E2;
+
       --rose:#C77B82;
+      --rose-soft:#F5E4E5;
+
+      --sage:#8EA493;
+      --sage-soft:#E7EFE9;
     }
 
     *{
       box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
     }
 
     html,
     body{
       margin:0;
-      padding:0;
-      width:100%;
       min-height:100%;
+
       background:var(--bg);
       color:var(--text);
 
@@ -71,146 +78,555 @@
         BlinkMacSystemFont,
         "Apple SD Gothic Neo",
         "Noto Sans KR",
+        "Malgun Gothic",
         sans-serif;
     }
 
     body{
-      min-height:100vh;
+      padding:
+        calc(
+          env(safe-area-inset-top) +
+          28px
+        )
+        18px
+        calc(
+          env(safe-area-inset-bottom) +
+          28px
+        );
 
       display:flex;
-      align-items:center;
-      justify-content:center;
 
-      padding:
-        max(24px, env(safe-area-inset-top))
-        24px
-        max(24px, env(safe-area-inset-bottom));
+      justify-content:center;
     }
 
     .wrap{
       width:100%;
-      max-width:420px;
-      text-align:center;
+      max-width:430px;
     }
 
-    .logo{
-      width:112px;
-      height:112px;
+    .hero{
+      padding:26px 22px;
 
-      margin:0 auto 22px;
+      border:1px solid #F0E4E1;
+      border-radius:28px;
 
-      border-radius:25px;
-      overflow:hidden;
+      background:
+        linear-gradient(
+          145deg,
+          #FFFFFF 0%,
+          #FFF9F7 58%,
+          #F2E7E2 100%
+        );
 
       box-shadow:
-        0 10px 30px
-        rgba(80,60,60,.10);
-    }
-
-    .logo img{
-      display:block;
-      width:100%;
-      height:100%;
-      object-fit:cover;
+        0 12px 36px
+        rgba(73,48,48,.07);
     }
 
     .eyebrow{
       color:var(--rose);
+
       font-size:11px;
       font-weight:800;
+
       letter-spacing:.18em;
     }
 
-    h1{
-      margin:10px 0 0;
+    .title{
+      margin-top:8px;
 
       font-family:
         Georgia,
         "Times New Roman",
         serif;
 
-      font-size:30px;
-      font-weight:600;
+      font-size:31px;
+      font-weight:700;
     }
 
-    .sub{
-      margin-top:10px;
+    .names{
+      margin-top:6px;
 
       color:var(--muted);
 
-      font-size:13px;
-      line-height:1.6;
+      font-size:14px;
     }
 
-    .openButton{
+    .card{
+      margin-top:12px;
+
+      padding:18px;
+
+      border:1px solid var(--line);
+      border-radius:20px;
+
+      background:var(--card);
+    }
+
+    .cardTitle{
+      font-size:16px;
+      font-weight:850;
+    }
+
+    .cardText{
+      margin-top:7px;
+
+      color:var(--muted);
+
+      font-size:12px;
+      line-height:1.65;
+    }
+
+    .status{
       display:flex;
+
       align-items:center;
-      justify-content:center;
 
+      gap:8px;
+
+      margin-top:13px;
+
+      padding:11px 12px;
+
+      border-radius:14px;
+
+      background:#FAF7F5;
+
+      font-size:12px;
+      font-weight:750;
+    }
+
+    .dot{
+      width:9px;
+      height:9px;
+
+      border-radius:50%;
+
+      background:#A9A09F;
+    }
+
+    .status.on .dot{
+      background:var(--sage);
+    }
+
+    .status.off .dot{
+      background:var(--rose);
+    }
+
+    button,
+    a.button{
       width:100%;
+      min-height:52px;
 
-      margin-top:28px;
-      padding:15px 18px;
+      margin-top:10px;
 
-      border-radius:16px;
+      padding:13px 14px;
+
+      border:0;
+      border-radius:15px;
+
+      font-size:14px;
+      font-weight:850;
+
+      text-decoration:none;
+      text-align:center;
+
+      cursor:pointer;
+    }
+
+    .primary{
+      display:block;
 
       background:var(--rose);
 
       color:#fff;
+    }
 
-      font-size:14px;
-      font-weight:800;
+    .secondary{
+      background:var(--sage-soft);
 
-      text-decoration:none;
+      color:#607867;
+    }
+
+    .ghost{
+      background:#F5F0EE;
+
+      color:#746A69;
     }
 
     .note{
       margin-top:12px;
 
-      color:#A39A98;
+      color:#9C9291;
 
       font-size:10px;
-      line-height:1.5;
+      line-height:1.6;
+
+      text-align:center;
     }
   </style>
 </head>
 
 <body>
 
-  <main class="wrap">
+<div class="wrap">
 
-    <div class="logo">
-      <img
-        src="./apple-touch-icon-v2.png"
-        alt="J♡D Wedding"
-      >
-    </div>
+  <section class="hero">
 
     <div class="eyebrow">
       OUR WEDDING
     </div>
 
-    <h1>
+    <div class="title">
       J♡D Wedding
-    </h1>
-
-    <div class="sub">
-      조재혁 ♥ 백다혜<br>
-      Wedding Dashboard
     </div>
 
-    <a
-      class="openButton"
-      href="https://script.google.com/macros/s/AKfycbyMeoQwIOuLQWh7ZvlSYjjHDazf-FsLv_BgMLgKcreitgwYeQricUesIpAAy7J1ezm5/exec"
+    <div class="names">
+      조재혁 ♥ 백다혜 · 2026.12.06
+    </div>
+
+  </section>
+
+
+  <section class="card">
+
+    <div class="cardTitle">
+      웨딩 일정 알림
+    </div>
+
+    <div class="cardText">
+      일정관리 시트의 확정·예정·진행중·투표중 일정을 기준으로
+      전날 오후 8시대에 푸시알림을 받을 수 있어요.
+    </div>
+
+
+    <div
+      class="status"
+      id="pushStatus"
     >
-      웨딩 대시보드 열기
-    </a>
 
-    <div class="note">
-      버튼을 누르면 웨딩 대시보드로 이동합니다.
+      <span class="dot"></span>
+
+      <span id="pushStatusText">
+        알림 상태 확인 중…
+      </span>
+
     </div>
 
-  </main>
+
+    <button
+      class="secondary"
+      id="enablePushBtn"
+      type="button"
+    >
+      🔔 푸시알림 받기
+    </button>
+
+
+    <button
+      class="ghost"
+      id="checkPushBtn"
+      type="button"
+    >
+      알림 허용 여부 다시 확인
+    </button>
+
+  </section>
+
+
+  <a
+    class="button primary"
+    href="https://script.google.com/macros/s/AKfycbyMeoQwIOuLQWh7ZvlSYjjHDazf-FsLv_BgMLgKcreitgwYeQricUesIpAAy7J1ezm5/exec"
+  >
+    웨딩 대시보드 열기
+  </a>
+
+
+  <div class="note">
+    iPhone에서는 홈 화면에 추가한 J♡D Wedding 앱으로 열고
+    ‘푸시알림 받기’를 눌러야 시스템 알림 허용 창이 표시됩니다.
+  </div>
+
+</div>
+
+
+<script>
+
+const ONESIGNAL_APP_ID =
+  "YOUR_ONESIGNAL_APP_ID";
+
+
+const EXTERNAL_USER_ID =
+  "jd-wedding-2026";
+
+
+let oneSignalReady =
+  false;
+
+
+window.OneSignalDeferred =
+  window.OneSignalDeferred ||
+  [];
+
+
+OneSignalDeferred.push(
+  async function(
+    OneSignal
+  ){
+
+    await OneSignal.init({
+
+      appId:
+        ONESIGNAL_APP_ID,
+
+      serviceWorkerPath:
+        "/wedding-icon/OneSignalSDKWorker.js",
+
+      serviceWorkerParam:{
+        scope:
+          "/wedding-icon/"
+      },
+
+      notifyButton:{
+        enable:false
+      }
+
+    });
+
+
+    OneSignal.login(
+      EXTERNAL_USER_ID
+    );
+
+
+    oneSignalReady =
+      true;
+
+
+    window.JDOneSignal =
+      OneSignal;
+
+
+    updatePushStatus();
+
+  }
+);
+
+
+function setStatus(
+  text,
+  enabled
+){
+
+  const box =
+    document.getElementById(
+      "pushStatus"
+    );
+
+
+  const label =
+    document.getElementById(
+      "pushStatusText"
+    );
+
+
+  label.textContent =
+    text;
+
+
+  box.classList.remove(
+    "on",
+    "off"
+  );
+
+
+  if(
+    enabled === true
+  ){
+
+    box.classList.add(
+      "on"
+    );
+
+  }
+
+
+  if(
+    enabled === false
+  ){
+
+    box.classList.add(
+      "off"
+    );
+
+  }
+
+}
+
+
+async function updatePushStatus(){
+
+  if(
+    !(
+      "Notification"
+      in window
+    )
+  ){
+
+    setStatus(
+      "이 기기는 웹 푸시를 지원하지 않습니다.",
+      false
+    );
+
+    return;
+
+  }
+
+
+  if(
+    Notification.permission ===
+    "granted"
+  ){
+
+    setStatus(
+      "푸시알림 허용됨",
+      true
+    );
+
+  }
+
+  else if(
+    Notification.permission ===
+    "denied"
+  ){
+
+    setStatus(
+      "알림이 차단되어 있어요. iPhone 설정에서 허용해 주세요.",
+      false
+    );
+
+  }
+
+  else{
+
+    setStatus(
+      "아직 알림 권한을 허용하지 않았어요.",
+      null
+    );
+
+  }
+
+}
+
+
+document
+  .getElementById(
+    "enablePushBtn"
+  )
+  .addEventListener(
+    "click",
+    async () => {
+
+      if(
+        !oneSignalReady ||
+        !window.JDOneSignal
+      ){
+
+        alert(
+          "푸시 서비스 초기화 중입니다. 앱을 다시 열고 한 번 더 눌러 주세요."
+        );
+
+        return;
+
+      }
+
+
+      try{
+
+        await window
+          .JDOneSignal
+          .Notifications
+          .requestPermission();
+
+
+        await updatePushStatus();
+
+
+        if(
+          Notification.permission ===
+          "granted"
+        ){
+
+          alert(
+            "알림이 켜졌어요. 웨딩 일정 전날 오후 8시대에 알려드릴게요."
+          );
+
+        }
+
+      }
+
+      catch(error){
+
+        alert(
+          "알림 설정 중 오류가 발생했습니다: "
+          +
+          (
+            error?.message ||
+            error
+          )
+        );
+
+      }
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "checkPushBtn"
+  )
+  .addEventListener(
+    "click",
+    async () => {
+
+      await updatePushStatus();
+
+
+      if(
+        Notification.permission ===
+        "granted"
+      ){
+
+        alert(
+          "현재 알림 권한이 허용되어 있습니다."
+        );
+
+      }
+
+      else if(
+        Notification.permission ===
+        "denied"
+      ){
+
+        alert(
+          "iPhone 설정 > 알림 > J♡D Wedding에서 알림을 허용해 주세요."
+        );
+
+      }
+
+      else{
+
+        alert(
+          "‘푸시알림 받기’ 버튼을 눌러 알림 권한을 허용해 주세요."
+        );
+
+      }
+
+    }
+  );
+
+</script>
 
 </body>
 </html>
