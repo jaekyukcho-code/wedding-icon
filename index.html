@@ -35,6 +35,19 @@
 
   <link
     rel="apple-touch-icon"
+    sizes="180x180"
+    href="./apple-touch-icon-v2.png"
+  >
+
+  <link
+    rel="apple-touch-icon-precomposed"
+    sizes="180x180"
+    href="./apple-touch-icon-v2.png"
+  >
+
+  <link
+    rel="icon"
+    type="image/png"
     href="./apple-touch-icon-v2.png"
   >
 
@@ -46,6 +59,7 @@
   ></script>
 
   <style>
+
     :root{
       --bg:#F8F5F2;
       --card:#FFFFFF;
@@ -58,20 +72,33 @@
 
       --sage:#8EA493;
       --sage-soft:#E7EFE9;
+
+      --shadow:
+        0 12px 36px
+        rgba(73,48,48,.07);
     }
+
 
     *{
       box-sizing:border-box;
-      -webkit-tap-highlight-color:transparent;
+
+      -webkit-tap-highlight-color:
+        transparent;
     }
+
 
     html,
     body{
       margin:0;
+      padding:0;
+
       min-height:100%;
 
-      background:var(--bg);
-      color:var(--text);
+      background:
+        var(--bg);
+
+      color:
+        var(--text);
 
       font-family:
         -apple-system,
@@ -82,33 +109,63 @@
         sans-serif;
     }
 
+
     body{
-      padding:
-        calc(
-          env(safe-area-inset-top) +
-          28px
-        )
-        18px
-        calc(
-          env(safe-area-inset-bottom) +
-          28px
-        );
+      min-height:100vh;
 
       display:flex;
 
       justify-content:center;
+
+      padding:
+        calc(
+          env(safe-area-inset-top)
+          +
+          28px
+        )
+        18px
+        calc(
+          env(safe-area-inset-bottom)
+          +
+          28px
+        );
     }
+
+
+    button,
+    a{
+      font-family:inherit;
+
+      -webkit-tap-highlight-color:
+        transparent;
+    }
+
 
     .wrap{
       width:100%;
+
       max-width:430px;
     }
 
-    .hero{
-      padding:26px 22px;
 
-      border:1px solid #F0E4E1;
-      border-radius:28px;
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero{
+      position:relative;
+
+      overflow:hidden;
+
+      padding:
+        26px 22px;
+
+      border:
+        1px solid
+        #F0E4E1;
+
+      border-radius:
+        28px;
 
       background:
         linear-gradient(
@@ -119,63 +176,172 @@
         );
 
       box-shadow:
-        0 12px 36px
-        rgba(73,48,48,.07);
+        var(--shadow);
     }
+
+
+    .hero:after{
+      content:"";
+
+      position:absolute;
+
+      width:170px;
+      height:170px;
+
+      right:-80px;
+      top:-90px;
+
+      border-radius:50%;
+
+      background:
+        #F0DCDD;
+
+      opacity:.7;
+    }
+
 
     .eyebrow{
-      color:var(--rose);
+      position:relative;
 
-      font-size:11px;
-      font-weight:800;
+      z-index:1;
 
-      letter-spacing:.18em;
+      color:
+        var(--rose);
+
+      font-size:
+        11px;
+
+      font-weight:
+        800;
+
+      letter-spacing:
+        .18em;
     }
 
+
     .title{
-      margin-top:8px;
+      position:relative;
+
+      z-index:1;
+
+      margin-top:
+        8px;
 
       font-family:
         Georgia,
         "Times New Roman",
         serif;
 
-      font-size:31px;
-      font-weight:700;
+      font-size:
+        31px;
+
+      font-weight:
+        700;
     }
+
 
     .names{
-      margin-top:6px;
+      position:relative;
 
-      color:var(--muted);
+      z-index:1;
 
-      font-size:14px;
+      margin-top:
+        6px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        14px;
     }
+
+
+    .weddingDate{
+      position:relative;
+
+      z-index:1;
+
+      margin-top:
+        18px;
+
+      font-size:
+        17px;
+
+      font-weight:
+        850;
+    }
+
+
+    .venue{
+      position:relative;
+
+      z-index:1;
+
+      margin-top:
+        5px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        12px;
+    }
+
+
+    /* =========================
+       CARD
+    ========================= */
 
     .card{
-      margin-top:12px;
+      margin-top:
+        12px;
 
-      padding:18px;
+      padding:
+        18px;
 
-      border:1px solid var(--line);
-      border-radius:20px;
+      border:
+        1px solid
+        var(--line);
 
-      background:var(--card);
+      border-radius:
+        20px;
+
+      background:
+        var(--card);
+
+      box-shadow:
+        0 5px 20px
+        rgba(73,48,48,.035);
     }
+
 
     .cardTitle{
-      font-size:16px;
-      font-weight:850;
+      font-size:
+        16px;
+
+      font-weight:
+        850;
     }
+
 
     .cardText{
-      margin-top:7px;
+      margin-top:
+        7px;
 
-      color:var(--muted);
+      color:
+        var(--muted);
 
-      font-size:12px;
-      line-height:1.65;
+      font-size:
+        12px;
+
+      line-height:
+        1.65;
     }
+
+
+    /* =========================
+       PUSH STATUS
+    ========================= */
 
     .status{
       display:flex;
@@ -184,92 +350,269 @@
 
       gap:8px;
 
-      margin-top:13px;
+      margin-top:
+        14px;
 
-      padding:11px 12px;
+      padding:
+        12px;
 
-      border-radius:14px;
+      border-radius:
+        14px;
 
-      background:#FAF7F5;
+      background:
+        #FAF7F5;
 
-      font-size:12px;
-      font-weight:750;
+      color:
+        #756C6B;
+
+      font-size:
+        12px;
+
+      font-weight:
+        750;
     }
 
-    .dot{
+
+    .statusDot{
+      flex:0 0 auto;
+
       width:9px;
       height:9px;
 
-      border-radius:50%;
+      border-radius:
+        50%;
 
-      background:#A9A09F;
+      background:
+        #A9A09F;
+
+      transition:
+        .2s ease;
     }
 
-    .status.on .dot{
-      background:var(--sage);
+
+    .status.on{
+      background:
+        #F1F7F2;
+
+      color:
+        #607867;
     }
 
-    .status.off .dot{
-      background:var(--rose);
+
+    .status.on
+    .statusDot{
+      background:
+        var(--sage);
     }
+
+
+    .status.off{
+      background:
+        #FFF3F3;
+
+      color:
+        #A35D64;
+    }
+
+
+    .status.off
+    .statusDot{
+      background:
+        var(--rose);
+    }
+
+
+    /* =========================
+       BUTTON
+    ========================= */
 
     button,
     a.button{
       width:100%;
-      min-height:52px;
 
-      margin-top:10px;
+      min-height:
+        52px;
 
-      padding:13px 14px;
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      margin-top:
+        10px;
+
+      padding:
+        13px 14px;
 
       border:0;
-      border-radius:15px;
 
-      font-size:14px;
-      font-weight:850;
+      border-radius:
+        15px;
 
-      text-decoration:none;
-      text-align:center;
+      font-size:
+        14px;
+
+      font-weight:
+        850;
+
+      text-decoration:
+        none;
+
+      text-align:
+        center;
 
       cursor:pointer;
     }
 
+
     .primary{
-      display:block;
+      background:
+        var(--rose);
 
-      background:var(--rose);
-
-      color:#fff;
+      color:
+        #FFFFFF;
     }
+
+
+    .primary:active{
+      transform:
+        scale(.985);
+    }
+
 
     .secondary{
-      background:var(--sage-soft);
+      background:
+        var(--sage-soft);
 
-      color:#607867;
+      color:
+        #607867;
     }
+
+
+    .secondary:active{
+      transform:
+        scale(.985);
+    }
+
 
     .ghost{
-      background:#F5F0EE;
+      background:
+        #F5F0EE;
 
-      color:#746A69;
+      color:
+        #746A69;
     }
+
+
+    .ghost:active{
+      transform:
+        scale(.985);
+    }
+
+
+    /* =========================
+       INFORMATION
+    ========================= */
+
+    .infoBox{
+      margin-top:
+        12px;
+
+      padding:
+        13px;
+
+      border-radius:
+        14px;
+
+      background:
+        #FAF7F5;
+
+      color:
+        #766D6C;
+
+      font-size:
+        11px;
+
+      line-height:
+        1.7;
+    }
+
+
+    .infoTitle{
+      margin-bottom:
+        5px;
+
+      color:
+        var(--text);
+
+      font-size:
+        12px;
+
+      font-weight:
+        850;
+    }
+
 
     .note{
-      margin-top:12px;
+      margin-top:
+        14px;
 
-      color:#9C9291;
+      padding:
+        0 7px;
 
-      font-size:10px;
-      line-height:1.6;
+      color:
+        #9C9291;
 
-      text-align:center;
+      font-size:
+        10px;
+
+      line-height:
+        1.65;
+
+      text-align:
+        center;
     }
+
+
+    /* =========================
+       SMALL IPHONE
+    ========================= */
+
+    @media(max-width:390px){
+
+      .title{
+        font-size:
+          29px;
+      }
+
+
+      .hero{
+        padding:
+          24px 19px;
+      }
+
+
+      .card{
+        padding:
+          16px;
+      }
+
+    }
+
   </style>
+
 </head>
+
 
 <body>
 
 <div class="wrap">
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
 
   <section class="hero">
 
@@ -277,16 +620,32 @@
       OUR WEDDING
     </div>
 
+
     <div class="title">
       J♡D Wedding
     </div>
 
+
     <div class="names">
-      조재혁 ♥ 백다혜 · 2026.12.06
+      조재혁 ♥ 백다혜
+    </div>
+
+
+    <div class="weddingDate">
+      2026.12.06 · 11:30
+    </div>
+
+
+    <div class="venue">
+      엘리에나호텔 3F 임페리어홀
     </div>
 
   </section>
 
+
+  <!-- =========================
+       PUSH
+  ========================== -->
 
   <section class="card">
 
@@ -294,9 +653,13 @@
       웨딩 일정 알림
     </div>
 
+
     <div class="cardText">
-      일정관리 시트의 확정·예정·진행중·투표중 일정을 기준으로
-      전날 오후 8시대에 푸시알림을 받을 수 있어요.
+
+      Google Sheets의 일정관리 내용을 기준으로
+      결혼 준비 일정과 청첩장 모임을
+      전날 알림으로 받을 수 있어요.
+
     </div>
 
 
@@ -305,7 +668,8 @@
       id="pushStatus"
     >
 
-      <span class="dot"></span>
+      <span class="statusDot">
+      </span>
 
       <span id="pushStatusText">
         알림 상태 확인 중…
@@ -319,7 +683,9 @@
       id="enablePushBtn"
       type="button"
     >
+
       🔔 푸시알림 받기
+
     </button>
 
 
@@ -328,32 +694,65 @@
       id="checkPushBtn"
       type="button"
     >
+
       알림 허용 여부 다시 확인
+
     </button>
+
+
+    <div class="infoBox">
+
+      <div class="infoTitle">
+        알림 기준
+      </div>
+
+      일정 전날 오후 8시대에 알림을 보내요.<br>
+
+      청첩장 모임은
+      💌 청첩장 모임으로 표시되고,<br>
+
+      일반 결혼 준비 일정은
+      💍 웨딩 일정으로 표시돼요.
+
+    </div>
 
   </section>
 
+
+  <!-- =========================
+       DASHBOARD
+  ========================== -->
 
   <a
     class="button primary"
     href="https://script.google.com/macros/s/AKfycbyMeoQwIOuLQWh7ZvlSYjjHDazf-FsLv_BgMLgKcreitgwYeQricUesIpAAy7J1ezm5/exec"
   >
+
     웨딩 대시보드 열기
+
   </a>
 
 
   <div class="note">
-    iPhone에서는 홈 화면에 추가한 J♡D Wedding 앱으로 열고
-    ‘푸시알림 받기’를 눌러야 시스템 알림 허용 창이 표시됩니다.
+
+    iPhone에서는 Safari가 아니라
+    홈 화면에 추가한 J♡D Wedding 앱에서
+    ‘푸시알림 받기’를 눌러 주세요.
+
   </div>
+
 
 </div>
 
 
 <script>
 
+/* =========================
+   ONESIGNAL CONFIG
+========================= */
+
 const ONESIGNAL_APP_ID =
-  "YOUR_ONESIGNAL_APP_ID";
+  "c1ea1dde-e2c8-4246a635-916569ad8f00";
 
 
 const EXTERNAL_USER_ID =
@@ -363,6 +762,10 @@ const EXTERNAL_USER_ID =
 let oneSignalReady =
   false;
 
+
+/* =========================
+   ONESIGNAL INIT
+========================= */
 
 window.OneSignalDeferred =
   window.OneSignalDeferred ||
@@ -374,44 +777,78 @@ OneSignalDeferred.push(
     OneSignal
   ){
 
-    await OneSignal.init({
+    try{
 
-      appId:
-        ONESIGNAL_APP_ID,
+      await OneSignal.init({
 
-      serviceWorkerPath:
-        "/wedding-icon/OneSignalSDKWorker.js",
-
-      serviceWorkerParam:{
-        scope:
-          "/wedding-icon/"
-      },
-
-      notifyButton:{
-        enable:false
-      }
-
-    });
+        appId:
+          ONESIGNAL_APP_ID,
 
 
-    OneSignal.login(
-      EXTERNAL_USER_ID
-    );
+        serviceWorkerPath:
+          "/wedding-icon/OneSignalSDKWorker.js",
 
 
-    oneSignalReady =
-      true;
+        serviceWorkerParam:{
+          scope:
+            "/wedding-icon/"
+        },
 
 
-    window.JDOneSignal =
-      OneSignal;
+        notifyButton:{
+          enable:false
+        }
+
+      });
 
 
-    updatePushStatus();
+      /*
+        이 웨딩앱의 구독자를
+        Apps Script에서 지정할 수 있도록
+        고정 External ID 사용
+      */
+      await OneSignal.login(
+        EXTERNAL_USER_ID
+      );
+
+
+      oneSignalReady =
+        true;
+
+
+      window.JDOneSignal =
+        OneSignal;
+
+
+      await updatePushStatus();
+
+    }
+
+    catch(error){
+
+      console.error(
+        "OneSignal 초기화 오류",
+        error
+      );
+
+
+      setStatus(
+
+        "푸시 서비스를 불러오지 못했습니다.",
+
+        false
+
+      );
+
+    }
 
   }
 );
 
+
+/* =========================
+   STATUS UI
+========================= */
 
 function setStatus(
   text,
@@ -434,19 +871,23 @@ function setStatus(
     text;
 
 
-  box.classList.remove(
-    "on",
-    "off"
-  );
+  box
+    .classList
+    .remove(
+      "on",
+      "off"
+    );
 
 
   if(
     enabled === true
   ){
 
-    box.classList.add(
-      "on"
-    );
+    box
+      .classList
+      .add(
+        "on"
+      );
 
   }
 
@@ -455,14 +896,20 @@ function setStatus(
     enabled === false
   ){
 
-    box.classList.add(
-      "off"
-    );
+    box
+      .classList
+      .add(
+        "off"
+      );
 
   }
 
 }
 
+
+/* =========================
+   CHECK PERMISSION
+========================= */
 
 async function updatePushStatus(){
 
@@ -474,8 +921,11 @@ async function updatePushStatus(){
   ){
 
     setStatus(
-      "이 기기는 웹 푸시를 지원하지 않습니다.",
+
+      "이 기기에서는 웹 푸시를 사용할 수 없습니다.",
+
       false
+
     );
 
     return;
@@ -483,26 +933,36 @@ async function updatePushStatus(){
   }
 
 
+  const permission =
+    Notification.permission;
+
+
   if(
-    Notification.permission ===
+    permission ===
     "granted"
   ){
 
     setStatus(
+
       "푸시알림 허용됨",
+
       true
+
     );
 
   }
 
   else if(
-    Notification.permission ===
+    permission ===
     "denied"
   ){
 
     setStatus(
-      "알림이 차단되어 있어요. iPhone 설정에서 허용해 주세요.",
+
+      "알림이 차단되어 있습니다.",
+
       false
+
     );
 
   }
@@ -510,14 +970,21 @@ async function updatePushStatus(){
   else{
 
     setStatus(
+
       "아직 알림 권한을 허용하지 않았어요.",
+
       null
+
     );
 
   }
 
 }
 
+
+/* =========================
+   ENABLE PUSH
+========================= */
 
 document
   .getElementById(
@@ -527,13 +994,15 @@ document
     "click",
     async () => {
 
+
       if(
-        !oneSignalReady ||
+        !oneSignalReady
+        ||
         !window.JDOneSignal
       ){
 
         alert(
-          "푸시 서비스 초기화 중입니다. 앱을 다시 열고 한 번 더 눌러 주세요."
+          "푸시 서비스가 아직 준비되지 않았어요. 앱을 닫았다가 다시 열고 시도해 주세요."
         );
 
         return;
@@ -557,8 +1026,19 @@ document
           "granted"
         ){
 
+          /*
+            권한 승인 뒤에도
+            External ID를 다시 연결
+          */
+          await window
+            .JDOneSignal
+            .login(
+              EXTERNAL_USER_ID
+            );
+
+
           alert(
-            "알림이 켜졌어요. 웨딩 일정 전날 오후 8시대에 알려드릴게요."
+            "푸시알림이 켜졌어요.\n웨딩 일정 전날 오후 8시대에 알려드릴게요."
           );
 
         }
@@ -567,13 +1047,21 @@ document
 
       catch(error){
 
+        console.error(
+          error
+        );
+
+
         alert(
-          "알림 설정 중 오류가 발생했습니다: "
+
+          "알림 설정 중 오류가 발생했습니다.\n"
           +
           (
-            error?.message ||
+            error?.message
+            ||
             error
           )
+
         );
 
       }
@@ -582,6 +1070,10 @@ document
   );
 
 
+/* =========================
+   CHECK BUTTON
+========================= */
+
 document
   .getElementById(
     "checkPushBtn"
@@ -589,6 +1081,7 @@ document
   .addEventListener(
     "click",
     async () => {
+
 
       await updatePushStatus();
 
@@ -599,7 +1092,7 @@ document
       ){
 
         alert(
-          "현재 알림 권한이 허용되어 있습니다."
+          "현재 J♡D Wedding의 알림이 허용되어 있습니다."
         );
 
       }
@@ -610,7 +1103,7 @@ document
       ){
 
         alert(
-          "iPhone 설정 > 알림 > J♡D Wedding에서 알림을 허용해 주세요."
+          "현재 알림이 차단되어 있습니다.\niPhone 설정 → 알림 → J♡D Wedding에서 알림을 허용해 주세요."
         );
 
       }
@@ -618,13 +1111,34 @@ document
       else{
 
         alert(
-          "‘푸시알림 받기’ 버튼을 눌러 알림 권한을 허용해 주세요."
+          "아직 알림 권한을 허용하지 않았어요.\n‘푸시알림 받기’를 눌러 주세요."
         );
 
       }
 
     }
   );
+
+
+/* =========================
+   INITIAL STATUS
+========================= */
+
+window.addEventListener(
+  "load",
+  () => {
+
+    setTimeout(
+      () => {
+
+        updatePushStatus();
+
+      },
+      500
+    );
+
+  }
+);
 
 </script>
 
