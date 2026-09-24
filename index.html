@@ -8,10 +8,7 @@
     content="width=device-width, initial-scale=1, viewport-fit=cover"
   >
 
-  <meta
-    name="theme-color"
-    content="#F8F5F2"
-  >
+  <meta name="theme-color" content="#F8F5F2">
 
   <meta
     name="apple-mobile-web-app-capable"
@@ -35,19 +32,11 @@
 
   <link
     rel="apple-touch-icon"
-    sizes="180x180"
-    href="./apple-touch-icon-v2.png"
-  >
-
-  <link
-    rel="apple-touch-icon-precomposed"
-    sizes="180x180"
     href="./apple-touch-icon-v2.png"
   >
 
   <link
     rel="icon"
-    type="image/png"
     href="./apple-touch-icon-v2.png"
   >
 
@@ -59,35 +48,28 @@
   ></script>
 
   <style>
-    :root{
+    :root {
       --bg:#F8F5F2;
       --card:#FFFFFF;
       --text:#302B2C;
       --muted:#8D8382;
       --line:#EEE5E2;
-
       --rose:#C77B82;
-      --rose-soft:#F5E4E5;
-
       --sage:#8EA493;
       --sage-soft:#E7EFE9;
-
-      --shadow:
-        0 12px 36px
-        rgba(73,48,48,.07);
+      --shadow:0 12px 36px rgba(73,48,48,.07);
     }
 
-    *{
+    * {
       box-sizing:border-box;
       -webkit-tap-highlight-color:transparent;
     }
 
     html,
-    body{
+    body {
       margin:0;
       padding:0;
       min-height:100%;
-
       background:var(--bg);
       color:var(--text);
 
@@ -100,7 +82,7 @@
         sans-serif;
     }
 
-    body{
+    body {
       min-height:100vh;
 
       display:flex;
@@ -113,17 +95,17 @@
     }
 
     button,
-    a{
+    a {
       font-family:inherit;
       -webkit-tap-highlight-color:transparent;
     }
 
-    .wrap{
+    .wrap {
       width:100%;
       max-width:430px;
     }
 
-    .hero{
+    .hero {
       position:relative;
       overflow:hidden;
 
@@ -143,7 +125,7 @@
       box-shadow:var(--shadow);
     }
 
-    .hero:after{
+    .hero:after {
       content:"";
 
       position:absolute;
@@ -157,11 +139,10 @@
       border-radius:50%;
 
       background:#F0DCDD;
-
       opacity:.7;
     }
 
-    .eyebrow{
+    .eyebrow {
       position:relative;
       z-index:1;
 
@@ -169,11 +150,10 @@
 
       font-size:11px;
       font-weight:800;
-
       letter-spacing:.18em;
     }
 
-    .title{
+    .title {
       position:relative;
       z-index:1;
 
@@ -188,18 +168,17 @@
       font-weight:700;
     }
 
-    .names{
+    .names {
       position:relative;
       z-index:1;
 
       margin-top:6px;
 
       color:var(--muted);
-
       font-size:14px;
     }
 
-    .weddingDate{
+    .weddingDate {
       position:relative;
       z-index:1;
 
@@ -209,20 +188,18 @@
       font-weight:850;
     }
 
-    .venue{
+    .venue {
       position:relative;
       z-index:1;
 
       margin-top:5px;
 
       color:var(--muted);
-
       font-size:12px;
     }
 
-    .card{
+    .card {
       margin-top:12px;
-
       padding:18px;
 
       border:1px solid var(--line);
@@ -235,12 +212,12 @@
         rgba(73,48,48,.035);
     }
 
-    .cardTitle{
+    .cardTitle {
       font-size:16px;
       font-weight:850;
     }
 
-    .cardText{
+    .cardText {
       margin-top:7px;
 
       color:var(--muted);
@@ -249,14 +226,13 @@
       line-height:1.65;
     }
 
-    .status{
+    .status {
       display:flex;
       align-items:center;
 
       gap:8px;
 
       margin-top:14px;
-
       padding:12px;
 
       border-radius:14px;
@@ -267,9 +243,11 @@
 
       font-size:12px;
       font-weight:750;
+
+      word-break:break-word;
     }
 
-    .statusDot{
+    .statusDot {
       flex:0 0 auto;
 
       width:9px;
@@ -278,30 +256,28 @@
       border-radius:50%;
 
       background:#A9A09F;
-
-      transition:.2s ease;
     }
 
-    .status.on{
+    .status.on {
       background:#F1F7F2;
       color:#607867;
     }
 
-    .status.on .statusDot{
+    .status.on .statusDot {
       background:var(--sage);
     }
 
-    .status.off{
+    .status.off {
       background:#FFF3F3;
       color:#A35D64;
     }
 
-    .status.off .statusDot{
+    .status.off .statusDot {
       background:var(--rose);
     }
 
     button,
-    a.button{
+    a.button {
       width:100%;
       min-height:52px;
 
@@ -310,7 +286,6 @@
       justify-content:center;
 
       margin-top:10px;
-
       padding:13px 14px;
 
       border:0;
@@ -325,36 +300,30 @@
       cursor:pointer;
     }
 
-    .primary{
+    .primary {
       background:var(--rose);
       color:#FFFFFF;
     }
 
-    .primary:active{
-      transform:scale(.985);
-    }
-
-    .secondary{
+    .secondary {
       background:var(--sage-soft);
       color:#607867;
     }
 
-    .secondary:active{
-      transform:scale(.985);
-    }
-
-    .ghost{
+    .ghost {
       background:#F5F0EE;
       color:#746A69;
     }
 
-    .ghost:active{
-      transform:scale(.985);
+    .danger {
+      display:none;
+
+      background:#FFF0F1;
+      color:#A75A63;
     }
 
-    .infoBox{
+    .infoBox {
       margin-top:12px;
-
       padding:13px;
 
       border-radius:14px;
@@ -367,7 +336,7 @@
       line-height:1.7;
     }
 
-    .infoTitle{
+    .infoTitle {
       margin-bottom:5px;
 
       color:var(--text);
@@ -376,9 +345,8 @@
       font-weight:850;
     }
 
-    .note{
+    .note {
       margin-top:14px;
-
       padding:0 7px;
 
       color:#9C9291;
@@ -389,17 +357,17 @@
       text-align:center;
     }
 
-    @media(max-width:390px){
+    @media(max-width:390px) {
 
-      .title{
+      .title {
         font-size:29px;
       }
 
-      .hero{
+      .hero {
         padding:24px 19px;
       }
 
-      .card{
+      .card {
         padding:16px;
       }
 
@@ -435,6 +403,7 @@
 
   </section>
 
+
   <section class="card">
 
     <div class="cardTitle">
@@ -446,6 +415,7 @@
       결혼 준비 일정과 청첩장 모임을
       전날 알림으로 받을 수 있어요.
     </div>
+
 
     <div
       class="status"
@@ -460,6 +430,7 @@
 
     </div>
 
+
     <button
       class="secondary"
       id="enablePushBtn"
@@ -468,13 +439,24 @@
       🔔 푸시알림 받기
     </button>
 
+
     <button
       class="ghost"
       id="checkPushBtn"
       type="button"
     >
-      알림 허용 여부 다시 확인
+      알림 연결 상태 확인
     </button>
+
+
+    <button
+      class="danger"
+      id="resetPushBtn"
+      type="button"
+    >
+      OneSignal 연결 초기화
+    </button>
+
 
     <div class="infoBox">
 
@@ -494,6 +476,7 @@
 
   </section>
 
+
   <a
     class="button primary"
     href="https://script.google.com/macros/s/AKfycbyMeoQwIOuLQWh7ZvlSYjjHDazf-FsLv_BgMLgKcreitgwYeQricUesIpAAy7J1ezm5/exec"
@@ -501,148 +484,125 @@
     웨딩 대시보드 열기
   </a>
 
+
   <div class="note">
     iPhone에서는 Safari가 아니라
     홈 화면에 추가한 J♡D Wedding 앱에서
-    ‘푸시알림 받기’를 눌러 주세요.
+    푸시알림을 설정해 주세요.
   </div>
 
 </div>
 
+
 <script>
+
+/* ============================================
+   CONFIG
+============================================ */
 
 const ONESIGNAL_APP_ID =
   "c1ea1dde-e2c8-4246-a635-916569ad8f00";
 
+
 const EXTERNAL_USER_ID =
   "jd-wedding-2026";
 
-let oneSignalReady =
-  false;
 
+let oneSignalInstance = null;
+
+let oneSignalReady = false;
+
+let initStarted = false;
+
+
+
+/* ============================================
+   UI
+============================================ */
 
 function setStatus(
   text,
-  enabled
-){
+  state
+) {
 
   const box =
     document.getElementById(
       "pushStatus"
     );
 
-  const label =
+
+  const textBox =
     document.getElementById(
       "pushStatusText"
     );
 
-  label.textContent =
+
+  textBox.textContent =
     text;
+
 
   box.classList.remove(
     "on",
     "off"
   );
 
-  if(
-    enabled === true
-  ){
+
+  if (
+    state === true
+  ) {
+
     box.classList.add(
       "on"
     );
+
   }
 
-  if(
-    enabled === false
-  ){
+
+  if (
+    state === false
+  ) {
+
     box.classList.add(
       "off"
     );
+
   }
 
 }
 
 
-window.OneSignalDeferred =
-  window.OneSignalDeferred ||
-  [];
+
+function showResetButton(
+  show
+) {
+
+  const button =
+    document.getElementById(
+      "resetPushBtn"
+    );
 
 
-OneSignalDeferred.push(
-  async function(
-    OneSignal
-  ){
+  button.style.display =
+    show
+      ? "flex"
+      : "none";
 
-    try{
-
-      await OneSignal.init({
-
-        appId:
-          ONESIGNAL_APP_ID,
-
-        serviceWorkerPath:
-          "OneSignalSDKWorker.js",
-
-        serviceWorkerParam:{
-          scope:
-            "/wedding-icon/"
-        },
-
-        notifyButton:{
-          enable:false
-        }
-
-      });
-
-      window.JDOneSignal =
-        OneSignal;
-
-      oneSignalReady =
-        true;
-
-      console.log(
-        "✅ OneSignal 초기화 성공"
-      );
-
-      await updatePushStatus();
-
-    }
-
-    catch(error){
-
-      oneSignalReady =
-        false;
-
-      console.error(
-        "❌ OneSignal 초기화 실패:",
-        error
-      );
-
-      setStatus(
-        "OneSignal 연결 오류: "
-        +
-        (
-          error?.message
-          ||
-          String(error)
-        ),
-        false
-      );
-
-    }
-
-  }
-);
+}
 
 
-async function updatePushStatus(){
 
-  if(
+/* ============================================
+   PERMISSION STATUS
+============================================ */
+
+async function refreshStatus() {
+
+  if (
     !(
       "Notification"
       in window
     )
-  ){
+  ) {
 
     setStatus(
       "이 기기에서는 웹 푸시를 사용할 수 없습니다.",
@@ -653,25 +613,73 @@ async function updatePushStatus(){
 
   }
 
-  const permission =
-    Notification.permission;
 
-  if(
-    permission ===
-    "granted"
-  ){
+  if (
+    !oneSignalReady
+  ) {
 
-    setStatus(
-      "푸시알림 허용됨",
-      true
-    );
+    return;
 
   }
 
-  else if(
+
+  const permission =
+    Notification.permission;
+
+
+  if (
+    permission ===
+    "granted"
+  ) {
+
+    let subscribed = false;
+
+
+    try {
+
+      subscribed =
+        !!oneSignalInstance
+          ?.User
+          ?.PushSubscription
+          ?.optedIn;
+
+    }
+
+    catch(error) {
+
+      console.log(
+        error
+      );
+
+    }
+
+
+    if (
+      subscribed
+    ) {
+
+      setStatus(
+        "푸시알림 연결 완료",
+        true
+      );
+
+    }
+
+    else {
+
+      setStatus(
+        "알림 권한 허용됨 · 구독 연결 확인 필요",
+        true
+      );
+
+    }
+
+  }
+
+  else if (
     permission ===
     "denied"
-  ){
+  ) {
 
     setStatus(
       "알림이 차단되어 있습니다.",
@@ -680,7 +688,7 @@ async function updatePushStatus(){
 
   }
 
-  else{
+  else {
 
     setStatus(
       "푸시알림을 받을 준비가 되었습니다.",
@@ -692,183 +700,714 @@ async function updatePushStatus(){
 }
 
 
+
+/* ============================================
+   ONESIGNAL INIT
+============================================ */
+
+window.OneSignalDeferred =
+  window.OneSignalDeferred || [];
+
+
+OneSignalDeferred.push(
+
+  async function(
+    OneSignal
+  ) {
+
+    /*
+      같은 페이지에서 중복 init 방지
+    */
+
+    if (
+      initStarted
+    ) {
+
+      return;
+
+    }
+
+
+    initStarted =
+      true;
+
+
+    try {
+
+      setStatus(
+        "OneSignal 연결 중…",
+        null
+      );
+
+
+      await OneSignal.init({
+
+        appId:
+          ONESIGNAL_APP_ID,
+
+
+        serviceWorkerPath:
+          "OneSignalSDKWorker.js",
+
+
+        serviceWorkerParam: {
+          scope:
+            "/wedding-icon/"
+        },
+
+
+        notifyButton: {
+          enable:false
+        }
+
+      });
+
+
+      oneSignalInstance =
+        OneSignal;
+
+
+      oneSignalReady =
+        true;
+
+
+      /*
+        사용자 ID 연결
+
+        OneSignal 문서상 login은
+        동일 사용자를 식별할 때
+        반복 호출해도 되는 방식이다.
+      */
+
+      await OneSignal.login(
+        EXTERNAL_USER_ID
+      );
+
+
+      console.log(
+        "✅ OneSignal 초기화 성공"
+      );
+
+
+      console.log(
+        "App ID:",
+        ONESIGNAL_APP_ID
+      );
+
+
+      console.log(
+        "External ID:",
+        EXTERNAL_USER_ID
+      );
+
+
+      showResetButton(
+        false
+      );
+
+
+      await refreshStatus();
+
+    }
+
+    catch(error) {
+
+      oneSignalReady =
+        false;
+
+
+      const message =
+        error?.message
+        ||
+        String(error);
+
+
+      console.error(
+        "❌ OneSignal 초기화 오류:",
+        error
+      );
+
+
+      /*
+        이전 App ID 기록과 충돌할 때
+        reset 버튼 노출
+      */
+
+      if (
+        message.includes(
+          "AppID doesn't match"
+        )
+      ) {
+
+        setStatus(
+          "OneSignal 앱 정보 충돌 · 아래 연결 초기화를 눌러주세요.",
+          false
+        );
+
+
+        showResetButton(
+          true
+        );
+
+      }
+
+      else if (
+        message.includes(
+          "already initialized"
+        )
+      ) {
+
+        /*
+          같은 페이지에서 SDK가 이미
+          초기화돼 있는 경우에는
+          fatal 오류로 취급하지 않음
+        */
+
+        oneSignalInstance =
+          OneSignal;
+
+
+        oneSignalReady =
+          true;
+
+
+        showResetButton(
+          false
+        );
+
+
+        await refreshStatus();
+
+      }
+
+      else {
+
+        setStatus(
+          "OneSignal 연결 오류: "
+          +
+          message,
+          false
+        );
+
+
+        showResetButton(
+          true
+        );
+
+      }
+
+    }
+
+  }
+
+);
+
+
+
+/* ============================================
+   ENABLE PUSH
+============================================ */
+
 document
   .getElementById(
     "enablePushBtn"
   )
   .addEventListener(
-    "click",
-    async () => {
 
-      if(
+    "click",
+
+    async function() {
+
+      if (
         !oneSignalReady
         ||
-        !window.JDOneSignal
-      ){
+        !oneSignalInstance
+      ) {
 
         alert(
-          "OneSignal 연결이 아직 완료되지 않았습니다.\n"
-          +
-          "화면의 연결 상태를 확인해 주세요."
+          "OneSignal 연결이 아직 완료되지 않았습니다."
         );
 
         return;
 
       }
 
-      try{
 
-        await window
-          .JDOneSignal
+      try {
+
+        /*
+          iPhone 알림 권한 요청
+        */
+
+        await oneSignalInstance
           .Notifications
           .requestPermission();
 
-        if(
-          Notification.permission !==
-          "granted"
-        ){
 
-          await updatePushStatus();
+        if (
+          Notification.permission
+          !==
+          "granted"
+        ) {
+
+          await refreshStatus();
 
           return;
 
         }
 
-        await window
-          .JDOneSignal
+
+        /*
+          사용자 식별
+        */
+
+        await oneSignalInstance
           .login(
             EXTERNAL_USER_ID
           );
 
-        const pushSubscription =
-          window
-            .JDOneSignal
-            .User
+
+        /*
+          Push Subscription 활성화
+        */
+
+        const subscription =
+          oneSignalInstance
+            ?.User
             ?.PushSubscription;
 
-        if(
-          pushSubscription
-          &&
-          typeof pushSubscription.optIn ===
-          "function"
-        ){
 
-          await pushSubscription
+        if (
+          subscription
+          &&
+          typeof subscription.optIn
+          ===
+          "function"
+        ) {
+
+          await subscription
             .optIn();
 
         }
 
-        await updatePushStatus();
 
-        console.log(
-          "✅ Push 구독 완료"
-        );
+        await refreshStatus();
+
 
         alert(
-          "푸시알림 설정이 완료됐어요.\n"
-          +
-          "이제 테스트 알림을 보내볼 수 있습니다."
+          "푸시알림 연결이 완료됐어요."
         );
-
-      }
-
-      catch(error){
-
-        console.error(
-          "❌ Push 등록 실패:",
-          error
-        );
-
-        const message =
-          error?.message
-          ||
-          String(error);
-
-        setStatus(
-          "푸시 등록 오류: "
-          +
-          message,
-          false
-        );
-
-        alert(
-          "푸시 등록 중 오류가 발생했습니다.\n\n"
-          +
-          message
-        );
-
-      }
 
     }
-  );
 
+    catch(error) {
+
+      const message =
+        error?.message
+        ||
+        String(error);
+
+
+      console.error(
+        error
+      );
+
+
+      setStatus(
+        "푸시 등록 오류: "
+        +
+        message,
+        false
+      );
+
+
+      showResetButton(
+        true
+      );
+
+    }
+
+  }
+
+);
+
+
+
+/* ============================================
+   CHECK
+============================================ */
 
 document
   .getElementById(
     "checkPushBtn"
   )
   .addEventListener(
+
     "click",
-    async () => {
 
-      await updatePushStatus();
+    async function() {
 
-      if(
-        Notification.permission ===
-        "granted"
-      ){
+      if (
+        !oneSignalReady
+      ) {
 
         alert(
-          "현재 J♡D Wedding의 알림이 허용되어 있습니다."
+          "현재 OneSignal 연결이 정상적으로 초기화되지 않았습니다."
+        );
+
+        return;
+
+      }
+
+
+      await refreshStatus();
+
+
+      const permission =
+        Notification.permission;
+
+
+      if (
+        permission ===
+        "granted"
+      ) {
+
+        const subscription =
+          oneSignalInstance
+            ?.User
+            ?.PushSubscription;
+
+
+        const subscriptionId =
+          subscription?.id
+          ||
+          "";
+
+
+        alert(
+          "알림 권한: 허용\n"
+          +
+          (
+            subscriptionId
+              ? "Push 구독 ID가 정상 생성되어 있습니다."
+              : "권한은 허용되어 있지만 Push 구독 ID를 확인할 수 없습니다."
+          )
         );
 
       }
 
-      else if(
-        Notification.permission ===
+      else if (
+        permission ===
         "denied"
-      ){
+      ) {
 
         alert(
-          "현재 알림이 차단되어 있습니다.\n"
+          "알림이 차단되어 있습니다.\n\n"
           +
           "iPhone 설정 → 알림 → J♡D Wedding에서 알림을 허용해 주세요."
         );
 
       }
 
-      else{
+      else {
 
         alert(
-          "아직 알림 권한을 허용하지 않았어요.\n"
-          +
-          "‘푸시알림 받기’를 눌러 주세요."
+          "아직 알림 권한이 설정되지 않았습니다."
         );
 
       }
 
     }
+
   );
 
 
-window.addEventListener(
-  "load",
-  () => {
 
-    setTimeout(
-      () => {
+/* ============================================
+   RESET ONESIGNAL CONNECTION
+============================================ */
 
-        if(
-          oneSignalReady
-        ){
-          updatePushStatus();
+document
+  .getElementById(
+    "resetPushBtn"
+  )
+  .addEventListener(
+
+    "click",
+
+    async function() {
+
+      const confirmed =
+        confirm(
+          "OneSignal 연결 정보만 초기화한 뒤 앱을 다시 불러옵니다.\n\n계속할까요?"
+        );
+
+
+      if (
+        !confirmed
+      ) {
+
+        return;
+
+      }
+
+
+      setStatus(
+        "OneSignal 연결 초기화 중…",
+        null
+      );
+
+
+      try {
+
+        /*
+          1. 서비스워커 해제
+        */
+
+        if (
+          "serviceWorker"
+          in navigator
+        ) {
+
+          const registrations =
+            await navigator
+              .serviceWorker
+              .getRegistrations();
+
+
+          for (
+            const registration
+            of registrations
+          ) {
+
+            if (
+              registration
+                .scope
+                .includes(
+                  "/wedding-icon/"
+                )
+            ) {
+
+              await registration
+                .unregister();
+
+            }
+
+          }
+
         }
 
-      },
-      1000
-    );
+
+        /*
+          2. OneSignal 관련 LocalStorage 제거
+        */
+
+        const localKeys = [];
+
+
+        for (
+          let i = 0;
+          i < localStorage.length;
+          i++
+        ) {
+
+          const key =
+            localStorage.key(
+              i
+            );
+
+
+          if (
+            key
+            &&
+            key
+              .toLowerCase()
+              .includes(
+                "onesignal"
+              )
+          ) {
+
+            localKeys.push(
+              key
+            );
+
+          }
+
+        }
+
+
+        localKeys
+          .forEach(
+            function(key) {
+
+              localStorage
+                .removeItem(
+                  key
+                );
+
+            }
+          );
+
+
+        /*
+          3. OneSignal 관련 IndexedDB 제거
+          지원되는 Safari/iOS에서만 실행
+        */
+
+        if (
+          indexedDB
+          &&
+          typeof indexedDB.databases
+          ===
+          "function"
+        ) {
+
+          const databases =
+            await indexedDB
+              .databases();
+
+
+          databases
+            .forEach(
+              function(database) {
+
+                const name =
+                  database?.name
+                  ||
+                  "";
+
+
+                if (
+                  name
+                    .toLowerCase()
+                    .includes(
+                      "onesignal"
+                    )
+                ) {
+
+                  indexedDB
+                    .deleteDatabase(
+                      name
+                    );
+
+                }
+
+              }
+            );
+
+        }
+
+
+        /*
+          4. 캐시 제거
+        */
+
+        if (
+          "caches"
+          in window
+        ) {
+
+          const cacheNames =
+            await caches
+              .keys();
+
+
+          for (
+            const name
+            of cacheNames
+          ) {
+
+            if (
+              name
+                .toLowerCase()
+                .includes(
+                  "onesignal"
+                )
+            ) {
+
+              await caches
+                .delete(
+                  name
+                );
+
+            }
+
+          }
+
+        }
+
+
+        alert(
+          "연결 정보를 초기화했습니다.\n앱을 다시 불러옵니다."
+        );
+
+
+        location.reload();
+
+      }
+
+      catch(error) {
+
+        console.error(
+          error
+        );
+
+
+        alert(
+          "자동 초기화 중 오류가 발생했습니다.\n"
+          +
+          "기존 방식대로 Safari 웹사이트 데이터를 삭제한 뒤 다시 설치해 주세요."
+        );
+
+      }
+
+    }
+
+  );
+
+
+
+/* ============================================
+   INITIAL DISPLAY
+============================================ */
+
+window.addEventListener(
+
+  "load",
+
+  function() {
+
+    if (
+      "Notification"
+      in window
+    ) {
+
+      if (
+        Notification.permission
+        ===
+        "granted"
+      ) {
+
+        setStatus(
+          "알림 권한 확인 중…",
+          null
+        );
+
+      }
+
+      else {
+
+        setStatus(
+          "OneSignal 연결 중…",
+          null
+        );
+
+      }
+
+    }
 
   }
+
 );
 
 </script>
