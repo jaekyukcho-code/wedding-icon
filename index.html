@@ -107,17 +107,9 @@
       justify-content:center;
 
       padding:
-        calc(
-          env(safe-area-inset-top)
-          +
-          28px
-        )
+        calc(env(safe-area-inset-top) + 28px)
         18px
-        calc(
-          env(safe-area-inset-bottom)
-          +
-          28px
-        );
+        calc(env(safe-area-inset-bottom) + 28px);
     }
 
     button,
@@ -130,10 +122,6 @@
       width:100%;
       max-width:430px;
     }
-
-    /* =========================
-       HERO
-    ========================= */
 
     .hero{
       position:relative;
@@ -232,10 +220,6 @@
       font-size:12px;
     }
 
-    /* =========================
-       CARD
-    ========================= */
-
     .card{
       margin-top:12px;
 
@@ -264,10 +248,6 @@
       font-size:12px;
       line-height:1.65;
     }
-
-    /* =========================
-       PUSH STATUS
-    ========================= */
 
     .status{
       display:flex;
@@ -319,10 +299,6 @@
     .status.off .statusDot{
       background:var(--rose);
     }
-
-    /* =========================
-       BUTTON
-    ========================= */
 
     button,
     a.button{
@@ -376,10 +352,6 @@
       transform:scale(.985);
     }
 
-    /* =========================
-       INFORMATION
-    ========================= */
-
     .infoBox{
       margin-top:12px;
 
@@ -417,10 +389,6 @@
       text-align:center;
     }
 
-    /* =========================
-       SMALL IPHONE
-    ========================= */
-
     @media(max-width:390px){
 
       .title{
@@ -442,10 +410,6 @@
 <body>
 
 <div class="wrap">
-
-  <!-- =========================
-       HERO
-  ========================== -->
 
   <section class="hero">
 
@@ -471,11 +435,6 @@
 
   </section>
 
-
-  <!-- =========================
-       PUSH
-  ========================== -->
-
   <section class="card">
 
     <div class="cardTitle">
@@ -493,8 +452,7 @@
       id="pushStatus"
     >
 
-      <span class="statusDot">
-      </span>
+      <span class="statusDot"></span>
 
       <span id="pushStatusText">
         OneSignal 연결 중…
@@ -536,11 +494,6 @@
 
   </section>
 
-
-  <!-- =========================
-       DASHBOARD
-  ========================== -->
-
   <a
     class="button primary"
     href="https://script.google.com/macros/s/AKfycbyMeoQwIOuLQWh7ZvlSYjjHDazf-FsLv_BgMLgKcreitgwYeQricUesIpAAy7J1ezm5/exec"
@@ -556,28 +509,17 @@
 
 </div>
 
-
 <script>
 
-/* =========================
-   CONFIG
-========================= */
-
 const ONESIGNAL_APP_ID =
-  "c1ea1dde-e2c8-4246a635-916569ad8f00";
-
+  "c1ea1dde-e2c8-4246-a635-916569ad8f00";
 
 const EXTERNAL_USER_ID =
   "jd-wedding-2026";
 
-
 let oneSignalReady =
   false;
 
-
-/* =========================
-   STATUS
-========================= */
 
 function setStatus(
   text,
@@ -589,50 +531,37 @@ function setStatus(
       "pushStatus"
     );
 
-
   const label =
     document.getElementById(
       "pushStatusText"
     );
 
-
   label.textContent =
     text;
-
 
   box.classList.remove(
     "on",
     "off"
   );
 
-
   if(
     enabled === true
   ){
-
     box.classList.add(
       "on"
     );
-
   }
-
 
   if(
     enabled === false
   ){
-
     box.classList.add(
       "off"
     );
-
   }
 
 }
 
-
-/* =========================
-   ONESIGNAL INIT
-========================= */
 
 window.OneSignalDeferred =
   window.OneSignalDeferred ||
@@ -651,16 +580,13 @@ OneSignalDeferred.push(
         appId:
           ONESIGNAL_APP_ID,
 
-
         serviceWorkerPath:
           "OneSignalSDKWorker.js",
-
 
         serviceWorkerParam:{
           scope:
             "/wedding-icon/"
         },
-
 
         notifyButton:{
           enable:false
@@ -668,19 +594,15 @@ OneSignalDeferred.push(
 
       });
 
-
       window.JDOneSignal =
         OneSignal;
-
 
       oneSignalReady =
         true;
 
-
       console.log(
         "✅ OneSignal 초기화 성공"
       );
-
 
       await updatePushStatus();
 
@@ -691,15 +613,12 @@ OneSignalDeferred.push(
       oneSignalReady =
         false;
 
-
       console.error(
         "❌ OneSignal 초기화 실패:",
         error
       );
 
-
       setStatus(
-
         "OneSignal 연결 오류: "
         +
         (
@@ -707,9 +626,7 @@ OneSignalDeferred.push(
           ||
           String(error)
         ),
-
         false
-
       );
 
     }
@@ -717,10 +634,6 @@ OneSignalDeferred.push(
   }
 );
 
-
-/* =========================
-   PERMISSION STATUS
-========================= */
 
 async function updatePushStatus(){
 
@@ -740,10 +653,8 @@ async function updatePushStatus(){
 
   }
 
-
   const permission =
     Notification.permission;
-
 
   if(
     permission ===
@@ -781,10 +692,6 @@ async function updatePushStatus(){
 }
 
 
-/* =========================
-   ENABLE PUSH
-========================= */
-
 document
   .getElementById(
     "enablePushBtn"
@@ -792,7 +699,6 @@ document
   .addEventListener(
     "click",
     async () => {
-
 
       if(
         !oneSignalReady
@@ -810,18 +716,12 @@ document
 
       }
 
-
       try{
-
-        /*
-          iPhone 알림 권한 요청
-        */
 
         await window
           .JDOneSignal
           .Notifications
           .requestPermission();
-
 
         if(
           Notification.permission !==
@@ -834,28 +734,17 @@ document
 
         }
 
-
-        /*
-          OneSignal 사용자 연결
-        */
-
         await window
           .JDOneSignal
           .login(
             EXTERNAL_USER_ID
           );
 
-
-        /*
-          Push Subscription opt-in
-        */
-
         const pushSubscription =
           window
             .JDOneSignal
             .User
             ?.PushSubscription;
-
 
         if(
           pushSubscription
@@ -869,14 +758,11 @@ document
 
         }
 
-
         await updatePushStatus();
-
 
         console.log(
           "✅ Push 구독 완료"
         );
-
 
         alert(
           "푸시알림 설정이 완료됐어요.\n"
@@ -893,12 +779,10 @@ document
           error
         );
 
-
         const message =
           error?.message
           ||
           String(error);
-
 
         setStatus(
           "푸시 등록 오류: "
@@ -906,7 +790,6 @@ document
           message,
           false
         );
-
 
         alert(
           "푸시 등록 중 오류가 발생했습니다.\n\n"
@@ -920,10 +803,6 @@ document
   );
 
 
-/* =========================
-   CHECK BUTTON
-========================= */
-
 document
   .getElementById(
     "checkPushBtn"
@@ -932,9 +811,7 @@ document
     "click",
     async () => {
 
-
       await updatePushStatus();
-
 
       if(
         Notification.permission ===
@@ -974,10 +851,6 @@ document
   );
 
 
-/* =========================
-   INITIAL STATUS
-========================= */
-
 window.addEventListener(
   "load",
   () => {
@@ -985,17 +858,10 @@ window.addEventListener(
     setTimeout(
       () => {
 
-        /*
-          OneSignal 초기화가 아직 진행 중이면
-          상태 문구를 덮어쓰지 않음
-        */
-
         if(
           oneSignalReady
         ){
-
           updatePushStatus();
-
         }
 
       },
