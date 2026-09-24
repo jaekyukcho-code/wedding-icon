@@ -509,9 +509,7 @@ const EXTERNAL_USER_ID =
 
 
 let oneSignalInstance = null;
-
 let oneSignalReady = false;
-
 let initStarted = false;
 
 
@@ -530,22 +528,18 @@ function setStatus(
       "pushStatus"
     );
 
-
   const textBox =
     document.getElementById(
       "pushStatusText"
     );
 
-
   textBox.textContent =
     text;
-
 
   box.classList.remove(
     "on",
     "off"
   );
-
 
   if (
     state === true
@@ -556,7 +550,6 @@ function setStatus(
     );
 
   }
-
 
   if (
     state === false
@@ -581,7 +574,6 @@ function showResetButton(
       "resetPushBtn"
     );
 
-
   button.style.display =
     show
       ? "flex"
@@ -592,7 +584,7 @@ function showResetButton(
 
 
 /* ============================================
-   PERMISSION STATUS
+   STATUS
 ============================================ */
 
 async function refreshStatus() {
@@ -632,7 +624,8 @@ async function refreshStatus() {
     "granted"
   ) {
 
-    let subscribed = false;
+    let subscribed =
+      false;
 
 
     try {
@@ -702,7 +695,7 @@ async function refreshStatus() {
 
 
 /* ============================================
-   ONESIGNAL INIT
+   ONESIGNAL
 ============================================ */
 
 window.OneSignalDeferred =
@@ -714,10 +707,6 @@ OneSignalDeferred.push(
   async function(
     OneSignal
   ) {
-
-    /*
-      같은 페이지에서 중복 init 방지
-    */
 
     if (
       initStarted
@@ -747,7 +736,7 @@ OneSignalDeferred.push(
 
 
         serviceWorkerPath:
-          "OneSignalSDKWorker.js",
+          "/wedding-icon/OneSignalSDKWorker.js",
 
 
         serviceWorkerParam: {
@@ -770,14 +759,6 @@ OneSignalDeferred.push(
       oneSignalReady =
         true;
 
-
-      /*
-        사용자 ID 연결
-
-        OneSignal 문서상 login은
-        동일 사용자를 식별할 때
-        반복 호출해도 되는 방식이다.
-      */
 
       await OneSignal.login(
         EXTERNAL_USER_ID
@@ -828,11 +809,6 @@ OneSignalDeferred.push(
       );
 
 
-      /*
-        이전 App ID 기록과 충돌할 때
-        reset 버튼 노출
-      */
-
       if (
         message.includes(
           "AppID doesn't match"
@@ -848,35 +824,6 @@ OneSignalDeferred.push(
         showResetButton(
           true
         );
-
-      }
-
-      else if (
-        message.includes(
-          "already initialized"
-        )
-      ) {
-
-        /*
-          같은 페이지에서 SDK가 이미
-          초기화돼 있는 경우에는
-          fatal 오류로 취급하지 않음
-        */
-
-        oneSignalInstance =
-          OneSignal;
-
-
-        oneSignalReady =
-          true;
-
-
-        showResetButton(
-          false
-        );
-
-
-        await refreshStatus();
 
       }
 
@@ -935,10 +882,6 @@ document
 
       try {
 
-        /*
-          iPhone 알림 권한 요청
-        */
-
         await oneSignalInstance
           .Notifications
           .requestPermission();
@@ -957,19 +900,11 @@ document
         }
 
 
-        /*
-          사용자 식별
-        */
-
         await oneSignalInstance
           .login(
             EXTERNAL_USER_ID
           );
 
-
-        /*
-          Push Subscription 활성화
-        */
 
         const subscription =
           oneSignalInstance
@@ -998,38 +933,38 @@ document
           "푸시알림 연결이 완료됐어요."
         );
 
+      }
+
+      catch(error) {
+
+        const message =
+          error?.message
+          ||
+          String(error);
+
+
+        console.error(
+          error
+        );
+
+
+        setStatus(
+          "푸시 등록 오류: "
+          +
+          message,
+          false
+        );
+
+
+        showResetButton(
+          true
+        );
+
+      }
+
     }
 
-    catch(error) {
-
-      const message =
-        error?.message
-        ||
-        String(error);
-
-
-      console.error(
-        error
-      );
-
-
-      setStatus(
-        "푸시 등록 오류: "
-        +
-        message,
-        false
-      );
-
-
-      showResetButton(
-        true
-      );
-
-    }
-
-  }
-
-);
+  );
 
 
 
@@ -1124,7 +1059,7 @@ document
 
 
 /* ============================================
-   RESET ONESIGNAL CONNECTION
+   RESET
 ============================================ */
 
 document
@@ -1139,7 +1074,7 @@ document
 
       const confirmed =
         confirm(
-          "OneSignal 연결 정보만 초기화한 뒤 앱을 다시 불러옵니다.\n\n계속할까요?"
+          "OneSignal 연결 정보를 초기화한 뒤 앱을 다시 불러옵니다.\n\n계속할까요?"
         );
 
 
@@ -1159,10 +1094,6 @@ document
 
 
       try {
-
-        /*
-          1. 서비스워커 해제
-        */
 
         if (
           "serviceWorker"
@@ -1198,11 +1129,8 @@ document
         }
 
 
-        /*
-          2. OneSignal 관련 LocalStorage 제거
-        */
-
-        const localKeys = [];
+        const localKeys =
+          [];
 
 
         for (
@@ -1236,71 +1164,17 @@ document
         }
 
 
-        localKeys
-          .forEach(
-            function(key) {
+        localKeys.forEach(
+          function(key) {
 
-              localStorage
-                .removeItem(
-                  key
-                );
+            localStorage
+              .removeItem(
+                key
+              );
 
-            }
-          );
+          }
+        );
 
-
-        /*
-          3. OneSignal 관련 IndexedDB 제거
-          지원되는 Safari/iOS에서만 실행
-        */
-
-        if (
-          indexedDB
-          &&
-          typeof indexedDB.databases
-          ===
-          "function"
-        ) {
-
-          const databases =
-            await indexedDB
-              .databases();
-
-
-          databases
-            .forEach(
-              function(database) {
-
-                const name =
-                  database?.name
-                  ||
-                  "";
-
-
-                if (
-                  name
-                    .toLowerCase()
-                    .includes(
-                      "onesignal"
-                    )
-                ) {
-
-                  indexedDB
-                    .deleteDatabase(
-                      name
-                    );
-
-                }
-
-              }
-            );
-
-        }
-
-
-        /*
-          4. 캐시 제거
-        */
 
         if (
           "caches"
@@ -1354,9 +1228,7 @@ document
 
 
         alert(
-          "자동 초기화 중 오류가 발생했습니다.\n"
-          +
-          "기존 방식대로 Safari 웹사이트 데이터를 삭제한 뒤 다시 설치해 주세요."
+          "자동 초기화 중 오류가 발생했습니다."
         );
 
       }
@@ -1368,7 +1240,7 @@ document
 
 
 /* ============================================
-   INITIAL DISPLAY
+   INITIAL
 ============================================ */
 
 window.addEventListener(
